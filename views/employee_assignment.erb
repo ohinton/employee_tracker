@@ -1,0 +1,16 @@
+<h3>Select the division that this employee is part of:</h3>
+<% if @divisions.any?() %>
+  <form action="/employee/<%= @employee.id %>/assignment" method="post">
+    <input type="hidden" name="_method" value="patch">
+
+    <% @divisions.each() do |division| %>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="division_ids[]" value="<%= division.id() %>"><%= division.name() %>
+        </label>
+      </div>
+    <% end %>
+
+    <button type="submit">Add divisions</button>
+  </form>
+<% end %>

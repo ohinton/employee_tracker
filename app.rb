@@ -62,6 +62,7 @@ end
 
 get('/employee/:id/edit') do
   @employee = Employee.find(params.fetch("id").to_i())
+  @divisions = Division.all()
   erb(:employee_edit)
 end
 
@@ -79,5 +80,22 @@ delete("/employee/:id/delete") do
   @employee.delete()
   @employees = Employee.all()
   @divisions = Division.all()
+  erb(:index)
+end
+
+get("/employee/:id/assignment") do
+  @employee = Employee.find(params.fetch("id").to_i())
+  @employees = Employee.all()
+  @divisions = Division.all()
+  erb(:employee_assignment)
+end
+
+patch('/employee/:id/assignment') do
+  employee_id = params.fetch("id").to_i
+  @employee = Employee.find(employee_id)
+  division_ids = params.fetch("division_ids")
+  @employee.update({:division_id => division_ids})
+  @divisions = Division.all()
+  @employees = Employee.all()
   erb(:index)
 end
