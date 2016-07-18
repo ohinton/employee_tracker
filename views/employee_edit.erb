@@ -1,13 +1,13 @@
-<h1>Update your division: <%=@division.name() %></h1>
+<h1>Update the employee: <%=@employee.name() %></h1>
 
-<form action="/division/<%= @division.id() %>" method="post">
+<form action="/employee/<%= @employee.id() %>" method="post">
   <input type="hidden" name="_method" value="patch">
-  <label for="name">Division</label>
+  <label for="name">Employee Name:</label>
   <input type="text" name="name" id="name">
   <button type="submit">Update!</button>
 </form>
 
-<form action="/division/<%= @division.id() %>/delete" method="post">
+<form action="/employee/<%= @employee.id() %>/delete" method="post">
   <input type="hidden" name="_method" value="delete">
   <button type="submit" name="button">Delete</button>
 </form>
