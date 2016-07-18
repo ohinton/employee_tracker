@@ -1,8 +1,22 @@
 <h1>Add a new employee</h1>
 
-<form action="/employee" method="post">
+<form action="/employees" method="post">
   <label for="name">Add a new employee</label>
   <input type="text" name="name">
+
+  <% if @divisions.any?() %>
+      <input type="hidden" name="_method">
+      <% @divisions.each() do |division| %>
+        <div class="checkbox">
+          <label>
+            <input name="division_id" type="checkbox" value="<%= division.id() %>"><%= division.name() %>
+          </label>
+        </div>
+      <% end %>
+  <% end %>
+
+
+
   <button type="submit">Add a employee</button>
 </form>
 

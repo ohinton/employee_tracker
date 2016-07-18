@@ -1,21 +1,21 @@
 <% if @divisions.any?() %>
   <% @divisions.each() do |division| %>
-    <li><a href="/division/<%= division.id() %>/edit"><%= division.name %></a></li>
+    <li><a href="/divisions/<%= division.id() %>/edit"><%= division.name %></a></li>
 
   <% end %>
 <% else %>
   <p>No divisions</p>
 <% end %>
 
-<h2><a href="/division">Add a division</a></h2>
+<h2><a href="/divisions">Add a division</a></h2>
 
 <% if @employees.any?() %>
   <% @employees.each() do |employee| %>
-    <li><a href="/employee/<%= employee.id() %>/edit"><%= employee.name %></a></li>
+    <li><a href="/employees/<%= employee.id() %>/edit"><%= employee.name %></a></li>
 
   <% end %>
 <% else %>
   <p>No employees</p>
 <% end %>
 
-<h2><a href="/employee">Add a employee</a></h2>
+<h2><a href="/employees">Add an employee</a></h2>

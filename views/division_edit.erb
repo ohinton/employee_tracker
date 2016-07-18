@@ -1,13 +1,26 @@
+<% if @division.employees().any?() %>
+  <h3>Here are all the employees in this division:</h3>
+
+  <ul>
+    <% @division.employees().each() do |employee| %>
+      <li><%= employee.name() %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are no employees in this division yet!</p>
+<% end %>
+
+
 <h1>Update your division: <%=@division.name() %></h1>
 
-<form action="/division/<%= @division.id() %>" method="post">
+<form action="/divisions/<%= @division.id() %>" method="post">
   <input type="hidden" name="_method" value="patch">
   <label for="name">Division</label>
-  <input type="text" name="name" id="name">
+  <input type="text" name="name">
   <button type="submit">Update!</button>
 </form>
 
-<form action="/division/<%= @division.id() %>/delete" method="post">
+<form action="/divisions/<%= @division.id() %>/delete" method="post">
   <input type="hidden" name="_method" value="delete">
   <button type="submit" name="button">Delete</button>
 </form>

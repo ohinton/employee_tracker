@@ -1,18 +1,28 @@
 <h1>Update the employee: <%=@employee.name() %></h1>
 
-<form action="/employee/<%= @employee.id() %>" method="post">
+<form action="/employees/<%= @employee.id() %>" method="post">
   <input type="hidden" name="_method" value="patch">
   <label for="name">Employee Name:</label>
   <input type="text" name="name" id="name">
+  <% if @divisions.any?() %>
+      <input type="hidden" name="_method" value="patch">
+      <% @divisions.each() do |division| %>
+        <div class="checkbox">
+          <label>
+            <input name="division_id" type="checkbox" value="<%= division.id() %>"><%= division.name() %>
+          </label>
+        </div>
+      <% end %>
+  <% end %>
   <button type="submit">Update!</button>
 </form>
 
-<form action="/employee/<%= @employee.id() %>/delete" method="post">
+<form action="/employees/<%= @employee.id() %>/delete" method="post">
   <input type="hidden" name="_method" value="delete">
   <button type="submit" name="button">Delete</button>
 </form>
 
 
-<a href="/employee/<%= @employee.id() %>/assignment">Assign this employee to a division</a>
-
+<a href="/employees/<%= @employee.id() %>/assignment">Assign this employee to a division</a>
+<br>
 <a href="/">Home</a>
