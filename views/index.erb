@@ -1,0 +1,10 @@
+<% if @divisions.any?() %>
+  <% @divisions.each() do |division| %>
+    <li><a href="/division/<%= division.id() %>/edit"><%= division.name %></a>Update the division</li>
+
+  <% end %>
+<% else %>
+  <p>No divisions</p>
+<% end %>
+
+<li><a href="/division">Add a division</a></li>
